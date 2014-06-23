@@ -1,0 +1,294 @@
+unit scitala;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, StdCtrls,math, Menus;
+
+type
+  Tfscitala = class(TForm)
+    Memo1: TMemo;
+    Button1: TButton;
+    Memo2: TMemo;
+    ListBox1: TListBox;
+    StringGrid1: TStringGrid;
+    Edit1: TEdit;
+    Label1: TLabel;
+    Button2: TButton;
+    MainMenu1: TMainMenu;
+    File1: TMenuItem;
+    Chiudi1: TMenuItem;
+    Esci1: TMenuItem;
+    Vaia1: TMenuItem;
+    CifrariodiCesare1: TMenuItem;
+    Info1: TMenuItem;
+    Manuale1: TMenuItem;
+    N1: TMenuItem;
+    About1: TMenuItem;
+    CifrariodiVigenere1: TMenuItem;
+    CheckBox1: TCheckBox;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    Button3: TButton;
+    Button4: TButton;
+    CifrarioAtbash1: TMenuItem;
+    CifrarioRSA1: TMenuItem;
+    abellaASCII1: TMenuItem;
+    procedure Memo1Change(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Chiudi1Click(Sender: TObject);
+    procedure Esci1Click(Sender: TObject);
+    procedure CifrariodiCesare1Click(Sender: TObject);
+    procedure CifrariodiVigenere1Click(Sender: TObject);
+    procedure About1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormActivate(Sender: TObject);
+    procedure Manuale1Click(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure RadioButton1Click(Sender: TObject);
+    procedure RadioButton2Click(Sender: TObject);
+    procedure RadioButton3Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure CifrarioAtbash1Click(Sender: TObject);
+    procedure CifrarioRSA1Click(Sender: TObject);
+    procedure abellaASCII1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fscitala: Tfscitala;
+
+implementation
+
+uses Mainform, cesare, vigener, about, manuali, atbash, rsa, ascii;
+
+{$R *.dfm}
+
+procedure Tfscitala.Memo1Change(Sender: TObject);
+var a,b:integer;c:string;
+begin
+ listbox1.Clear;
+ b:=0;
+ a:=length(memo1.Text);
+ if memo1.Text<>'' then
+  begin
+   repeat
+    b:=b+1;
+    c:=copy(memo1.Text,b,1);
+    listbox1.Items.Add(c);
+   until b=a
+  end
+end;
+
+procedure Tfscitala.Button1Click(Sender: TObject);
+var a,b:integer;
+begin
+ for a:=0 to stringgrid1.colcount do     // pulisce
+  for b:=0 to stringgrid1.rowcount do     // la
+   stringgrid1.Cells[a,b]:='';              // griglia
+ if radiobutton1.checked=true then
+  button4.Click
+ else
+  if radiobutton2.Checked=true then
+   button3.click;
+end;
+
+procedure Tfscitala.Button2Click(Sender: TObject);
+var a,b:integer;
+begin
+ memo1.clear;
+ stringgrid1.colcount:=19;
+ stringgrid1.rowcount:=23;
+ edit1.Text:='1';
+ memo2.clear;
+ for a:=0 to stringgrid1.colcount do
+  for b:=0 to stringgrid1.rowcount do
+   stringgrid1.Cells[a,b]:='';
+end;
+
+procedure Tfscitala.Chiudi1Click(Sender: TObject);
+begin
+ close;
+ if (fatbash.visible=false) and (fcesare.visible=false) and (fvigenere.visible=false) then
+  formprinc.visible:=true;
+end;
+
+procedure Tfscitala.Esci1Click(Sender: TObject);
+begin
+ formprinc.Close;
+end;
+
+procedure Tfscitala.CifrariodiCesare1Click(Sender: TObject);
+begin
+ fcesare.Show;
+ close; 
+end;
+
+procedure Tfscitala.CifrariodiVigenere1Click(Sender: TObject);
+begin
+ fvigenere.Show;
+ close;
+end;
+
+procedure Tfscitala.About1Click(Sender: TObject);
+begin
+ fabout.show;
+end;
+
+procedure Tfscitala.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+ if (frsa.visible=false) and(fatbash.visible=false) and (fcesare.visible=false) and (fcesare.visible=false) and (fvigenere.visible=false) then
+  formprinc.Visible:=true;
+end;
+
+procedure Tfscitala.FormActivate(Sender: TObject);
+begin
+ formprinc.Visible:=false;
+ fmanuali.TabSheet1.TabVisible:=false;
+ fmanuali.TabSheet2.TabVisible:=false;
+ fmanuali.TabSheet3.TabVisible:=true;
+ fmanuali.TabSheet4.TabVisible:=true;
+ fmanuali.TabSheet5.TabVisible:=false;
+ fmanuali.TabSheet6.TabVisible:=false;
+ fmanuali.TabSheet9.TabVisible:=false;
+ fmanuali.TabSheet10.TabVisible:=false;
+ fmanuali.TabSheet11.TabVisible:=false;
+ fmanuali.TabSheet12.TabVisible:=false;
+ fmanuali.TabSheet13.TabVisible:=false;
+ fmanuali.TabSheet14.TabVisible:=false;
+end;
+
+procedure Tfscitala.Manuale1Click(Sender: TObject);
+begin
+fmanuali.show;
+end;
+
+procedure Tfscitala.CheckBox1Click(Sender: TObject);
+begin
+ if checkbox1.Checked=true then
+  fscitala.clientwidth :=610
+ else
+ fscitala.clientwidth:=290;
+end;
+
+procedure Tfscitala.FormCreate(Sender: TObject);
+begin
+ checkbox1.checked:=false;
+end;
+
+procedure Tfscitala.RadioButton1Click(Sender: TObject);
+begin
+ button1.Caption:='Codifica';
+end;
+
+procedure Tfscitala.RadioButton2Click(Sender: TObject);
+begin
+ button1.Caption:='Decodifica';
+end;
+
+procedure Tfscitala.RadioButton3Click(Sender: TObject);
+begin
+ button1.Caption:='Decodifica';
+end;
+
+procedure Tfscitala.Button3Click(Sender: TObject);
+var a1,a,x,x1,c,d,e,f,g,h:integer;
+begin
+ if  (length(memo1.text)  mod strtoint(edit1.Text)=0) then
+  x:=length(memo1.text) div strtoint(edit1.Text)
+ else
+  x:=length(memo1.text) div strtoint(edit1.Text)+1;
+ stringgrid1.colcount:=strtoint(edit1.text);
+ stringgrid1.RowCount:=x;
+ x1:=0;
+ for a1:=0 to x-1 do
+  begin
+   for a:=0 to x do
+    begin
+     if (listbox1.Count-1)>=(a+x1) then
+      stringgrid1.Cells[a,a1]:=listbox1.items[a+x1]
+     else
+    end;
+  x1:=(x1+(strtoint(edit1.Text)));
+  end;
+
+// riscrive la stringa in chiaro nel memo2
+ c:=stringgrid1.RowCount;
+ d:=stringgrid1.colcount;
+ for e:=0 to d-1 do
+  begin
+   for f:=0 to c do
+    begin
+     memo2.Text:=memo2.text+stringgrid1.Cells[e,f];
+// elimina gli eventuali caratteri'_' presenti a fine stringa
+     repeat
+      g:=length(memo2.Text);
+      if copy(memo2.Text,g,1)='_' then
+       memo2.Text:=copy(memo2.Text,0,(g-1));
+       h:=length(memo2.Text)
+     until g=h
+    end;
+  end;
+end;
+
+procedure Tfscitala.Button4Click(Sender: TObject);
+var a,a1,b,b1,x,x1,c,d,e,f:integer;
+begin
+ memo2.clear;
+ x1:=0;
+ if  (length(memo1.text)  mod strtoint(edit1.Text)=0) then
+  x:=length(memo1.text) div strtoint(edit1.Text)
+ else
+  x:=length(memo1.text) div strtoint(edit1.Text)+1;
+ b:=(x*(strtoint(edit1.Text)))-(listbox1.Count);
+ for b1:=0 to b do
+  listbox1.items.add('_');
+  stringgrid1.ColCount:=strtoint(edit1.Text);
+  stringgrid1.RowCount:=x;
+  for a1:=0 to (strtoint(edit1.Text)-1) do
+   begin
+    for a:=0 to x-1 do
+     begin
+      listbox1.ItemIndex:=a+x1;
+      stringgrid1.Cells[a1,a]:=listbox1.items[a+x1];
+     end;
+    x1:=(x1+x);
+   end;
+ c:=stringgrid1.RowCount;
+ d:=stringgrid1.colcount;
+ for e:=0 to c-1 do
+  begin
+   for f:=0 to d do
+    begin
+     memo2.Text:=memo2.text+stringgrid1.Cells[f,e]
+    end;
+  end;
+end;
+
+procedure Tfscitala.CifrarioAtbash1Click(Sender: TObject);
+begin
+ fatbash.show;
+ close;
+end;
+
+procedure Tfscitala.CifrarioRSA1Click(Sender: TObject);
+begin
+ frsa.show;
+ close;
+end;
+
+procedure Tfscitala.abellaASCII1Click(Sender: TObject);
+begin
+ if not(fascii.width<841) then
+  fascii.show;
+ fascii.stringgrid1.visible:=true;
+end;
+
+end.

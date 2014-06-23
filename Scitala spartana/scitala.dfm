@@ -1,0 +1,201 @@
+object fscitala: Tfscitala
+  Left = 286
+  Top = 217
+  BorderIcons = []
+  BorderStyle = bsSingle
+  Caption = 'Cifrario Spartano (Scitala)'
+  ClientHeight = 389
+  ClientWidth = 623
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 144
+    Top = 168
+    Width = 33
+    Height = 13
+    Caption = 'Chiave'
+  end
+  object StringGrid1: TStringGrid
+    Left = 296
+    Top = 16
+    Width = 305
+    Height = 369
+    BorderStyle = bsNone
+    ColCount = 19
+    DefaultColWidth = 15
+    DefaultRowHeight = 15
+    FixedCols = 0
+    RowCount = 23
+    FixedRows = 0
+    TabOrder = 4
+  end
+  object Memo1: TMemo
+    Left = 8
+    Top = 16
+    Width = 273
+    Height = 121
+    ScrollBars = ssVertical
+    TabOrder = 0
+    OnChange = Memo1Change
+  end
+  object Button1: TButton
+    Left = 56
+    Top = 232
+    Width = 75
+    Height = 25
+    Caption = 'Codifica'
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object Memo2: TMemo
+    Left = 8
+    Top = 264
+    Width = 273
+    Height = 121
+    ReadOnly = True
+    ScrollBars = ssVertical
+    TabOrder = 2
+  end
+  object ListBox1: TListBox
+    Left = 608
+    Top = 24
+    Width = 49
+    Height = 361
+    ItemHeight = 13
+    TabOrder = 3
+  end
+  object Edit1: TEdit
+    Left = 184
+    Top = 160
+    Width = 65
+    Height = 21
+    TabOrder = 5
+    Text = '1'
+  end
+  object Button2: TButton
+    Left = 136
+    Top = 232
+    Width = 75
+    Height = 25
+    Caption = 'cancella'
+    TabOrder = 6
+    OnClick = Button2Click
+  end
+  object CheckBox1: TCheckBox
+    Left = 80
+    Top = 200
+    Width = 97
+    Height = 17
+    Caption = 'Visualizza griglia'
+    Checked = True
+    State = cbChecked
+    TabOrder = 7
+    OnClick = CheckBox1Click
+  end
+  object RadioButton1: TRadioButton
+    Left = 48
+    Top = 152
+    Width = 81
+    Height = 17
+    Caption = 'Codifica'
+    Checked = True
+    TabOrder = 8
+    TabStop = True
+    OnClick = RadioButton1Click
+  end
+  object RadioButton2: TRadioButton
+    Left = 48
+    Top = 176
+    Width = 81
+    Height = 17
+    Caption = 'Decodifica'
+    TabOrder = 9
+    OnClick = RadioButton2Click
+  end
+  object Button3: TButton
+    Left = 264
+    Top = 176
+    Width = 27
+    Height = 25
+    Caption = 'dec'
+    TabOrder = 10
+    Visible = False
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 264
+    Top = 144
+    Width = 27
+    Height = 25
+    Caption = 'cod'
+    TabOrder = 11
+    Visible = False
+    OnClick = Button4Click
+  end
+  object MainMenu1: TMainMenu
+    Left = 8
+    Top = 144
+    object File1: TMenuItem
+      Caption = 'File'
+      object abellaASCII1: TMenuItem
+        Caption = 'Tabella ASCII'
+        OnClick = abellaASCII1Click
+      end
+      object Chiudi1: TMenuItem
+        Caption = 'Chiudi'
+        OnClick = Chiudi1Click
+      end
+      object Esci1: TMenuItem
+        Caption = 'Esci'
+        OnClick = Esci1Click
+      end
+    end
+    object Vaia1: TMenuItem
+      Caption = 'Vai a...'
+      object CifrarioAtbash1: TMenuItem
+        Caption = 'Cifrario Atbash'
+        OnClick = CifrarioAtbash1Click
+      end
+      object CifrariodiCesare1: TMenuItem
+        Caption = 'Cifrario di Cesare'
+        OnClick = CifrariodiCesare1Click
+      end
+      object CifrariodiVigenere1: TMenuItem
+        Caption = 'Cifrario di Vigenere'
+        OnClick = CifrariodiVigenere1Click
+      end
+      object CifrarioRSA1: TMenuItem
+        Caption = 'Cifrario RSA'
+        OnClick = CifrarioRSA1Click
+      end
+    end
+    object Info1: TMenuItem
+      Caption = 'Info'
+      object Manuale1: TMenuItem
+        Caption = 'Manuale'
+        OnClick = Manuale1Click
+      end
+    end
+    object N1: TMenuItem
+      Caption = '?'
+      object About1: TMenuItem
+        Caption = 'About'
+        Default = True
+        ShortCut = 16449
+        OnClick = About1Click
+      end
+    end
+  end
+end
